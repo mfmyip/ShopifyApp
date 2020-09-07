@@ -12,7 +12,7 @@ with open('q1Data.csv', newline='') as csvfile:
 ###################################################################################################
 # Q1 A:
 # The reason we had a AOV of 3145.13 was because we did not take into account the order quantity,
-# if we normalize it by dividing by the quantity, we will get the correct AOV value.
+# if we normalize it by dividing order amount by the quantity, we will get the correct AOV value.
 sum1 = 0
 for i in range(1, len(arr)):
 	sum1 += int(arr[i][3]) / int(arr[i][4])
@@ -23,7 +23,7 @@ print("aov: ", aov) # AOV should be ~$387.74
 ###################################################################################################
 # Q1 B:
 # median OV, sort by order_amount / total_items, to get normalized median.
-# That's because a pair of sneakers sell for ~$27k per pair, which will skew our average to the right
+# One of the pair of sneakers sell for ~$27k per pair, which will skew our average (AOV) to the right
 # The median does not get affected the same way
 def getMedian(ls):
 	mid = int(len(ls) / 2)
@@ -56,7 +56,7 @@ dataNoDupedShop.sort(key = lambda row: int(row[7]))
 sumAg = 0
 for row in dataNoDupedShop:
 		sumAg += row[7]
-print("avg price per sneaker: ", sumAg / 100)
+print("avg price per sneaker: ", sumAg / 100) # is roughly ~$407
 
 ###################################################################################################
 # Q2 C:
