@@ -1,0 +1,33 @@
+Q2 a:
+################################################################
+SELECT COUNT() AS NumOrders, Shippers.ShipperName FROM Orders
+	LEFT JOIN Shippers ON Orders.ShipperID=Shippers.ShipperID
+    WHERE Shippers.ShipperName="Speedy Express"
+################################################################
+ans: 54
+
+
+Q2 b:
+################################################################
+SELECT Employees.EmployeeID, COUNT() AS NumOrders, Employees.LastName, Employees.FirstName FROM Orders
+	INNER JOIN Employees ON Employees.EmployeeID=Orders.EmployeeID
+    GROUP BY Orders.EmployeeID
+    ORDER BY COUNT() DESC
+################################################################
+ans: Peacock
+
+
+Q2 c:
+################################################################
+SELECT OrderDetails.ProductID, SUM(OrderDetails.Quantity) AS OrderQuantity, Products.ProductName
+	FROM OrderDetails
+	LEFT JOIN Orders ON Orders.OrderID=OrderDetails.OrderID
+    INNER JOIN Products ON OrderDetails.ProductID=Products.ProductID
+	WHERE
+		Orders.CustomerID IN (
+        SELECT Customers.CustomerID FROM [Customers] WHERE Customers.Country="Germany"
+		)
+  GROUP BY OrderDetails.ProductID
+  ORDER BY OrderQuantity DESC
+#################################################################
+ans: Boston Crab Meat
