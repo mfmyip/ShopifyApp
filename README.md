@@ -2,4 +2,4 @@
 
 To execute, please run `python q1.py`
 
-Answers for q2 are under q2.txt
+Answers for q1, q2 are under q1.py, q2.txt respectively
